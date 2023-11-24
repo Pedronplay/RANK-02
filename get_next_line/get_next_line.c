@@ -21,9 +21,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	tmps = ft_read_file(fd, tmps);
 	if (!tmps)
-	{
 		return (NULL);
-	}
 	line = ft_get_line(tmps);
 	tmps = ft_trim(tmps);
 	return (line);
