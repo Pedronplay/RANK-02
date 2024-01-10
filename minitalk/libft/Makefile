@@ -6,7 +6,7 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/04 09:58:50 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/09 01:10:39 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/10 02:48:58 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,24 +20,24 @@ ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_calloc.c \
 ft_strdup.c ft_atoi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 ft_substr.c ft_strjoin.c ft_strtrim.c ft_strmapi.c ft_split.c ft_striteri.c ft_itoa.c\
 ft_printf.c ft_print_base.c ft_print_ptr.c ft_print_char.c ft_print_str.c \
-get_next_line.c get_next_line_utils.c get_next_line_bonus.c get_next_line_utils_bonus.c
+get_next_line.c
 
-BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+LISTS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+LISTS_OBJS = $(LISTS_SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
-bonus: $(BONUS_OBJS) $(OBJS)
-	ar rc $(NAME) $(BONUS_OBJS) $(OBJS)
+lists : $(LISTS_OBJS) $(OBJS)
+	ar rc $(NAME) $(LISTS_OBJS) $(OBJS)
 
 clean:
-	rm -rf $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJS) $(LISTS_OBJS)
 
 fclean: clean
 	rm -rf $(NAME)

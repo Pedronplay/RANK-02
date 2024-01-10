@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:31:11 by pebarbos          #+#    #+#             */
-/*   Updated: 2023/11/08 15:25:09 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:26:34 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ int	main(void)
 	printf("%i\n", i);
 	i = printf(" %p %p ", LONG_MIN, LONG_MAX);
 	printf("%i\n", i);
-} */
+}
+ */

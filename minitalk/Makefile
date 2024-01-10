@@ -6,7 +6,7 @@
 #    By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:10:08 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/09 06:36:45 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/10 03:40:30 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,23 +25,29 @@ LIBFT		= ./libft/libft.a
 SRC_CLIENT	= client.c
 SRC_SRV		= server.c
 SRC_CLIENT_BNS	= client_bonus.c
-SRC_SRV_BNS	= server_bonus.c
+SRC_SRV_BNS		= server_bonus.c
 
 OBJS_SERVER = $(SRC_SRV:.c=.o)
 OBJS_CLIENT = $(SRC_CLIENT:.c=.o)
 
-all: $(SERVER) $(CLIENT)
+all: $(LIBFT) $(SERVER) $(CLIENT)
+	@echo "done some shit"	#${MAKE} --no-print-directory -C ./libft
+
+$(LIBFT):
+	${MAKE} --no-print-directory -C ./libft
 
 $(SERVER): $(OBJS_SERVER)
-	ar rc $(SERVER) $(OBJS_SERVER)
+	$(CC) $(CFLAGS) -o $(SERVER) $(OBJS_SERVER) -L./libft -lft 
 
-$(CLIENT): $(OBJS_CLIENT)
-	ar rc $(CLIENT) $(OBJS_CLIENT)
+$(CLIENT):  $(OBJS_CLIENT)
+	$(CC) $(CFLAGS) -o $(CLIENT) $(OBJS_CLIENT) -L./libft -lft	
 
-clean:
+clean: 
+	${MAKE} clean -C ./libft
 	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT)
 
 fclean: clean
+	${MAKE} fclean -C ./libft
 	rm -rf $(CLIENT) $(SERVER)
 
 re: fclean all
