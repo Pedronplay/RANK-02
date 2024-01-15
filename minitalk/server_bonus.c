@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 05:28:01 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/15 13:22:54 by pebarbos         ###   ########.fr       */
+/*   Created: 2024/01/15 12:49:56 by pebarbos          #+#    #+#             */
+/*   Updated: 2024/01/15 13:03:27 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	build_char(int sign)
 {
@@ -23,28 +23,22 @@ void	build_char(int sign)
 		c = 0;
 		return ;
 	}
-	if (sign == SIGUSR1)
+	if ( sign == SIGUSR1)
 		c |= (1 << i);
-	i++;
-	if (i == 8)
-	{
-		if (c == 0)
-			write(1, "\n", 1);
-		write(1, &c, 1);
-		i = 0;
-		c = 0;
-	}
+	write(1, &c, 1);
+	i = 0;
+	c = 0;
 }
 
 void	sign_handler(int bit)
 {
-	build_char(bit);
-//	signal(bit, sign_handler);
+	built_char(bit);
+	signal(bit, sign_handler);
 }
 
 int	main(void)
 {
-	int	pid;
+	int pid;
 
 	pid = getpid();
 	build_char(0);
@@ -54,5 +48,4 @@ int	main(void)
 	while (1)
 	{
 	}
-	return (0);
 }

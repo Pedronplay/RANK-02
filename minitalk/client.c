@@ -6,7 +6,7 @@
 /*   By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 04:15:55 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/10 00:39:50 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:48:03 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	send_to_server(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(250);
+		usleep(150);
 	}
-	usleep(150);
+	usleep(50);
 }
 
 int	main(int argc, char **argv)
@@ -39,7 +39,4 @@ int	main(int argc, char **argv)
 		send_to_server(pid, *argv[2]++);
 	send_to_server(pid, *argv[2]);
 	return (0);
-	while (1)
-	{
-	}
 }
