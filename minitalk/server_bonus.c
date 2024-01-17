@@ -6,13 +6,13 @@
 /*   By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 12:49:56 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/15 13:03:27 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:55:42 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include "minitalk.h"
 
-void	build_char(int sign)
+void	build_char(int sign, siginfo_t *info)
 {
 	static int	i;
 	static int	c;
@@ -23,28 +23,40 @@ void	build_char(int sign)
 		c = 0;
 		return ;
 	}
-	if ( sign == SIGUSR1)
+	if (sign == SIGUSR1)
 		c |= (1 << i);
-	write(1, &c, 1);
-	i = 0;
-	c = 0;
+	i++;
+	if (i == 8)
+	{
+		if (c == 0)
+		{
+			write(1, "\n", 1);
+			kill(info->si_pid, SIGUSR1);
+		}
+		write(1, &c, 1);
+		c = 0;
+		i = 0;
+	}
 }
 
-void	sign_handler(int bit)
+void	sign_handler(int bit, siginfo_t *info, void *content)
 {
-	built_char(bit);
-	signal(bit, sign_handler);
+	(void)content;
+	build_char(bit, info);
 }
 
 int	main(void)
 {
-	int pid;
+	struct sigaction	sa;
+	int					pid;
 
 	pid = getpid();
-	build_char(0);
+	build_char(0, NULL);
 	ft_printf("SERVER PID: %d\n", pid);
-	signal(SIGUSR1, sign_handler);
-	signal(SIGUSR2, sign_handler);
+	sa.sa_sigaction = &sign_handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 	{
 	}

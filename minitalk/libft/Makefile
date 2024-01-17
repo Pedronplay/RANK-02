@@ -6,13 +6,14 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/04 09:58:50 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/10 02:48:58 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/15 17:04:37 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+USERNAME = $(USER)
 SRCS = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isprint.c ft_memmove.c \
 ft_strlcat.c ft_strlen.c ft_bzero.c ft_isalpha.c ft_isdigit.c ft_memcpy.c \
 ft_memset.c ft_strlcpy.c ft_toupper.c ft_isascii.c ft_tolower.c ft_strchr.c \
@@ -31,15 +32,21 @@ LISTS_OBJS = $(LISTS_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@echo "$(USERNAME) IS READYYYYYYY!"
+	@ar rc $(NAME) $(OBJS)
 
 lists : $(LISTS_OBJS) $(OBJS)
+	@echo "SOME HELP FILES DONE"
 	ar rc $(NAME) $(LISTS_OBJS) $(OBJS)
 
 clean:
+	@echo "OBJECTS WENT TO TRASH"
 	rm -rf $(OBJS) $(LISTS_OBJS)
 
 fclean: clean
+	@echo "I LOST EVERYTHING :("
 	rm -rf $(NAME)
 
 re: fclean all
+
+#.SILENT:

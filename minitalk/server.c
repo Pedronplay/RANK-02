@@ -6,7 +6,7 @@
 /*   By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 05:28:01 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/15 13:22:54 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:11:30 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void	build_char(int sign)
 	}
 }
 
-void	sign_handler(int bit)
-{
-	build_char(bit);
-//	signal(bit, sign_handler);
-}
-
 int	main(void)
 {
 	int	pid;
@@ -49,8 +43,8 @@ int	main(void)
 	pid = getpid();
 	build_char(0);
 	ft_printf("SERVER PID: %d\n", pid);
-	signal(SIGUSR1, sign_handler);
-	signal(SIGUSR2, sign_handler);
+	signal(SIGUSR1, build_char);
+	signal(SIGUSR2, build_char);
 	while (1)
 	{
 	}
