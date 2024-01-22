@@ -18,7 +18,7 @@ void	signal_handler(int sig)
 	if (sig == SIGUSR1)
 		ft_printf("Message sent successfuly\n");
 	else
-		ft_printf("Something strange is happening\n");
+		ft_printf("Something strange is happening🖕🏾\n");
 	exit(EXIT_SUCCESS);
 }
 
