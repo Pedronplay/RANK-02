@@ -6,7 +6,7 @@
 #    By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:10:08 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/16 12:24:04 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/17 12:16:08 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJS_BNS_CL	= $(SRC_CLI_BNS:.c=.o)
 
 all: $(LIBFT) $(SERVER) $(CLIENT)
 
-bonus: all $(LIBFT) $(SERVER_BONUS) $(CLIENT_BONUS)
+bonus: $(LIBFT) $(SERVER_BONUS) $(CLIENT_BONUS)
 
 clean: 
 	${MAKE} clean -C ./libft

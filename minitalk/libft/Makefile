@@ -6,9 +6,22 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/04 09:58:50 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/15 17:04:37 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/17 12:44:47 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+###########################COLORS###############################################
+
+GREEN			= \033[1;32m
+RESET			= \033[1;0m
+BRIGHT_BLACK	= \033[1;30m
+RED				= \033[1;31m
+BRIGHT_GREEN	= \033[1;32m
+BRIGHT_YELLOW	= \033[1;33m
+BRIGHT_BLUE		= \033[1;34m
+BRIGHT_MAGENTA	= \033[1;35m
+BRIGHT_CYAN		= \033[1;36m
+BRIGHT_WHITE	= \033[1;37m
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -32,19 +45,19 @@ LISTS_OBJS = $(LISTS_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(USERNAME) IS READYYYYYYY!"
+	@echo "$(GREEN) $(USERNAME) $(BRIGHT_MAGENTA)IS READYYYYYYY! $(RESET)"
 	@ar rc $(NAME) $(OBJS)
 
 lists : $(LISTS_OBJS) $(OBJS)
-	@echo "SOME HELP FILES DONE"
+	@echo "$(GREEN) SOME HELP FILES DONE$(RESET)"
 	ar rc $(NAME) $(LISTS_OBJS) $(OBJS)
 
 clean:
-	@echo "OBJECTS WENT TO TRASH"
+	@echo "$(MAGENTA) OBJECTS WENT TO TRASH$(RESET)"
 	rm -rf $(OBJS) $(LISTS_OBJS)
 
 fclean: clean
-	@echo "I LOST EVERYTHING :("
+	@echo "$(RED) I LOST EVERYTHING :($(RESET)"
 	rm -rf $(NAME)
 
 re: fclean all
