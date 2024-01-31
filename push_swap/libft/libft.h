@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:15:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/09 01:13:53 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:30:27 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_atoi(const char *nptr);
-int			ft_atol(const char *nptr);
+long int	ft_atol(const char *nptr);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 /*ft_printf*/

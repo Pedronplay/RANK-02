@@ -6,7 +6,7 @@
 #    By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 10:27:26 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/30 15:04:35 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/01/31 11:33:23 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME	= push_swap
 LIBFT		= ./libft/libft.a
 
 	#Sources#
-SRCS	=	push_swap.c verify_args.c
+SRCS	=	push_swap.c verify_args.c insert_to_stacks.c
 #Im going to put here the .c files im going to make its wild for now
 
 OBJS	=	$(SRCS:.c=.o)

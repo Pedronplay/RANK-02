@@ -6,13 +6,13 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:24:29 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/30 15:34:46 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:30:14 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long int	ft_atol(const char *nptr)
 {
 	long int		i;
 	long int		sin;
