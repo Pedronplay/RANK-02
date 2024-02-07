@@ -15,17 +15,15 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-
-	if (argc < 2)
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
-	else if (verify_args(++argv) == 1)
+	if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	else
+		argv++;
+	if (verify_args(argv) == 1)
 	{
 		insert_to_stacks(&stack_a, argv);
 		printdata(stack_a);
 	}
 	else
-		ft_printf("Error");
+		ft_printf("Error\n");
 }
