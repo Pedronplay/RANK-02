@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pebarbos <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 10:27:26 by pebarbos          #+#    #+#              #
-#    Updated: 2024/01/31 11:33:23 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/02/14 14:14:55 by pedronplay       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 	#Compiling Variables#
 CC		 = cc
-CFLAGS	 = -Wall -Wextra -Werror
+CFLAGS	 = -g -Wall -Wextra -Werror
 
 	#Names#
 NAME	= push_swap
@@ -21,10 +21,14 @@ NAME	= push_swap
 LIBFT		= ./libft/libft.a
 
 	#Sources#
-SRCS	=	push_swap.c verify_args.c insert_to_stacks.c
-#Im going to put here the .c files im going to make its wild for now
+SRCS = push_swap.c \
+       verify_args.c \
+       insert_to_stacks.c \
+       ./operations/push.c \
+       ./operations/rotate_operations.c \
+       ./operations/swap.c
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 ##################### MAKEFILE RULES ##########################
 
@@ -32,7 +36,7 @@ all: $(LIBFT) $(NAME)
 
 bonus: $(LIBFT)
 
-clean: 
+clean:
 	${MAKE} clean -C ./libft
 	rm -rf $(OBJS)
 	
@@ -50,7 +54,7 @@ $(NAME): $(OBJS)
 ################################ MAKING BONUS PROGRAMS #################
 #
 #$(SERVER_BONUS): $(OBJS_BNS_SR)
-#	$(CC) $(CFLAGS) -o $(SERVER_BONUS) $(OBJS_BNS_SR) -L./libft -lft 
+#	$(CC) $(CFLAGS) -o $(SERVER_BONUS) $(OBJS_BNS_SR) L./libft -lft 
 #
 ################################# Making LIBFT #########################
 $(LIBFT):

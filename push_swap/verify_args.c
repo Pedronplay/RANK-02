@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:19:31 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/31 16:54:21 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:49:49 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	verify_numbers(char **args)
 	size_t	i;
 	size_t	j;
 
-	i = 1;
+	i = 0;
 	while (args[i])
 	{
 		j = 0;
@@ -71,6 +71,8 @@ int	verify_dupl(char **args)
 
 int	verify_args(char **args)
 {
+	if (args == NULL || args[0] == NULL)
+		return (0);
 	if (verify_numbers(args) && verify_max(args) && verify_dupl(args))
 		return (1);
 	return (0);

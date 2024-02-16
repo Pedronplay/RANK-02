@@ -22,6 +22,7 @@ void	printdata(t_stack *head)
 		ft_printf("%d ", temp->val);
 		temp = temp->next;
 	}
+	ft_printf("\n");
 }
 
 struct s_stack	*create(char *nums)
