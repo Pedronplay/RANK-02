@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:15:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/26 15:53:31 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 17:09:11 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	get_bigest(t_stack **stack)
 	int		max;
 	t_stack	*temp;
 
-	max = INT_MIN;
 	temp = *stack;
+	max = temp->val;
 	while (temp)
 	{
 		if (temp->val > max)
@@ -57,4 +57,20 @@ int	get_bigest(t_stack **stack)
 		temp = temp->next;
 	}
 	return (max);
+}
+
+int	get_lowest(t_stack **stack)
+{
+	int		min;
+	t_stack *temp;
+
+	temp = *stack;
+	min = temp->val;
+	while (temp)
+	{
+		if (temp->val < min)
+			min = temp->val;
+		temp = temp->next;
+	}
+	return (min);
 }

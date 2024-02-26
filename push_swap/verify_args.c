@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:19:31 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/26 16:17:45 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 16:39:50 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ int	verify_args(char **args)
 	return (0);
 }
 
-void	free_stack(t_stack *stack) 
+void	free_stack(t_stack *stack)
 {
-	t_stack *temp;
-	while (stack != NULL) 
+	t_stack	*temp;
+
+	while (stack != NULL)
 	{
 		temp = stack;
 		stack = stack->next;

@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/26 16:20:13 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 17:42:37 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
-	push(&stack_a, &stack_b, 'b');
-	push(&stack_b, &stack_a, 'a');
 	free_stack(stack_a);
 }
 

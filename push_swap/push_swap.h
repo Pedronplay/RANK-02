@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/26 16:18:17 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 17:32:10 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void			swap_b(t_stack **stack);
 void			swap_both(t_stack **stack_a, t_stack **stack_b);
 void			rotate(t_stack **stack, char leter);
 void			rotate_both(t_stack **stack_a, t_stack **stack_b);
-void			reverse_rotate(t_stack **stack);
+void			reverse_rotate(t_stack **stack, char c);
 void			push(t_stack **stack_a, t_stack **stack_b, char c);
 
 //algorithm
 int				get_bigest(t_stack **stack);
+int				get_lowest(t_stack**stack);
 void			push_swap(t_stack **stack_a, t_stack **stack_b);
 int				stacksize(t_stack **stack);
 bool			sorted(t_stack **stack);
