@@ -6,7 +6,7 @@
 #    By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 10:27:26 by pebarbos          #+#    #+#              #
-#    Updated: 2024/02/14 14:14:55 by pedronplay       ###   ########.fr        #
+#    Updated: 2024/02/26 10:46:45 by pedronplay       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS = push_swap.c \
        insert_to_stacks.c \
        ./operations/push.c \
        ./operations/rotate_operations.c \
-       ./operations/swap.c
+       ./operations/swap.c \
+	   ./operations/algorithm.c \
+       ./operations/algorithm_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

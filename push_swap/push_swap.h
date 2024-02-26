@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/16 15:01:36 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 16:18:17 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
+# include <stdbool.h>
 # include "libft/libft.h"
 
 typedef struct s_stack
@@ -33,13 +34,24 @@ void			printdata(t_stack *head);
 int				verify_numbers(char **args);
 int				verify_max(char **args);
 int				verify_args(char **args);
+void			free_stack(t_stack *stack);
 
 //operations 
 void			swap(t_stack **stack);
+void			swap_a(t_stack **stack);
+void			swap_b(t_stack **stack);
 void			swap_both(t_stack **stack_a, t_stack **stack_b);
-void			rotate(t_stack **stack);
+void			rotate(t_stack **stack, char leter);
 void			rotate_both(t_stack **stack_a, t_stack **stack_b);
 void			reverse_rotate(t_stack **stack);
-void			push(t_stack **stack_a, t_stack **stack_b);
+void			push(t_stack **stack_a, t_stack **stack_b, char c);
+
+//algorithm
+int				get_bigest(t_stack **stack);
+void			push_swap(t_stack **stack_a, t_stack **stack_b);
+int				stacksize(t_stack **stack);
+bool			sorted(t_stack **stack);
+void			sort_three(t_stack **stack);
+void			sort_five(t_stack **stack_a, t_stack **stack_b);
 
 #endif

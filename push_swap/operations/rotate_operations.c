@@ -6,13 +6,13 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:29:41 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/16 16:22:12 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/21 15:23:42 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate(t_stack **stack)
+void	rotate(t_stack **stack, char leters)
 {
 	t_stack	*temp;
 	t_stack	*last;
@@ -26,6 +26,12 @@ void	rotate(t_stack **stack)
 	*stack = temp->next;
 	temp->next->prev = NULL;
 	temp->next = NULL;
+	if (leters == 'a')
+		ft_printf("ra\n");
+	else if (leters == 'b')
+		ft_printf("rb\n");
+	else
+		(void)leters;
 }
 
 void	reverse_rotate(t_stack **stack)
@@ -48,8 +54,8 @@ void	rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_a && *stack_b)
 	{
-		rotate(stack_a),
-		rotate(stack_b);
+		rotate(stack_a, 'n');
+		rotate(stack_b, 'n');
 		ft_printf("rr\n");
 	}
 	else

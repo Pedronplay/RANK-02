@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   insert_to_stacks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:33:30 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/31 16:38:01 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:23:51 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	printdata(t_stack *head)
-{
-	struct s_stack	*temp;
-
-	temp = head;
-	while (temp != NULL)
-	{
-		ft_printf("%d ", temp->val);
-		temp = temp->next;
-	}
-	ft_printf("\n");
-}
 
 struct s_stack	*create(char *nums)
 {
