@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/28 14:42:37 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/28 17:12:18 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
+	ft_printf("\n\n Target position-> \"5\" %d\n",get_position(&stack_a, 5));
 	free_stack(stack_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:15:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/28 15:37:03 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/28 17:11:20 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,21 @@ int	get_lowest(t_stack **stack)
 		temp = temp->next;
 	}
 	return (min);
+}
+
+int	get_position(t_stack **stack, int target)
+{
+	t_stack	*temp;
+	int		i;
+
+	temp = *stack;
+	i = 0;
+	while (temp)
+	{
+		if (temp->val == target)
+			return (i);
+		i++;
+		temp = temp->next;
+	}
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/28 15:25:48 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/28 17:06:56 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int				get_bigest(t_stack **stack);
 int				get_lowest(t_stack**stack);
 int				stacksize(t_stack **stack);
 bool			sorted(t_stack **stack);
+int				get_position(t_stack **stack, int target);
 
 //algorithm
 void			sort_three(t_stack **stack);
