@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/27 19:38:25 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/28 15:25:48 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ void			rotate_both(t_stack **stack_a, t_stack **stack_b);
 void			reverse_rotate(t_stack **stack, char c);
 void			push(t_stack **stack_a, t_stack **stack_b, char c);
 
-//algorithm
+//algorithm utils
 int				get_bigest(t_stack **stack);
 int				get_lowest(t_stack**stack);
-void			push_swap(t_stack **stack_a, t_stack **stack_b);
 int				stacksize(t_stack **stack);
 bool			sorted(t_stack **stack);
+
+//algorithm
 void			sort_three(t_stack **stack);
+void			push_swap(t_stack **stack_a, t_stack **stack_b);
 void			sort_five(t_stack **stack_a, t_stack **stack_b);
 void			big_sort(t_stack **stack_a, t_stack **stack_b);
 

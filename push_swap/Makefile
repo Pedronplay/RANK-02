@@ -6,7 +6,7 @@
 #    By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 10:27:26 by pebarbos          #+#    #+#              #
-#    Updated: 2024/02/27 10:55:21 by pedronplay       ###   ########.fr        #
+#    Updated: 2024/02/28 15:37:19 by pedronplay       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ LIBFT		= ./libft/libft.a
 
 	#Sources#
 SRCS = push_swap.c \
-       verify_args.c \
-       insert_to_stacks.c \
-       ./operations/rotate_operations.c \
-       ./operations/swap.c \
-	   ./operations/algorithm.c \
-       ./operations/algorithm_utils.c
+	./inserting_to_stacks/verify_args.c \
+	./inserting_to_stacks/insert_to_stacks.c \
+	./operations/rotate_operations.c \
+	./operations/swap.c \
+	./algorithm/algorithm.c \
+	./algorithm/algorithm_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
