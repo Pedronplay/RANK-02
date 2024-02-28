@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:29:41 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/26 17:35:35 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/27 10:54:18 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	reverse_rotate(t_stack **stack, char leters)
 	*stack = last;
 	last->prev->next = NULL;
 	last->prev = NULL;
-		if (leters == 'a')
+	if (leters == 'a')
 		ft_printf("rra\n");
 	else if (leters == 'b')
 		ft_printf("rrb\n");
@@ -78,4 +78,25 @@ void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
 	}
 	else
 		return ;
+}
+
+void	push(t_stack **stack_sender, t_stack **stack_receiver, char c)
+{
+	t_stack	*temp;
+
+	if (*stack_sender)
+	{
+		temp = *stack_sender;
+		*stack_sender = (*stack_sender)->next;
+		if (*stack_sender)
+			(*stack_sender)->prev = NULL;
+		temp->next = *stack_receiver;
+		if (*stack_receiver)
+			(*stack_receiver)->prev = temp;
+		*stack_receiver = temp;
+	}
+	if (c == 'a')
+		ft_printf("pa\n");
+	else if (c == 'b')
+		ft_printf("pb\n");
 }

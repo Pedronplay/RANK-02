@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:15:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/26 17:09:11 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/26 18:47:45 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	get_bigest(t_stack **stack)
 int	get_lowest(t_stack **stack)
 {
 	int		min;
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *stack;
 	min = temp->val;

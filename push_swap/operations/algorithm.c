@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:01:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/26 18:18:29 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/27 11:34:50 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 		sort_three(stack_a);
 	else if (stacksize(stack_a) <= 5)
 		sort_five(stack_a, stack_b);
+	else
+		big_sort(stack_a, stack_b);
 	ft_printf("stack size ->%d\n", stacksize(stack_a));
 	printdata(*stack_a);
 }
@@ -65,4 +67,11 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	}
 	else if (!sorted(stack_a))
 		rotate(stack_a, 'a');
+}
+
+void	big_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	(void)stack_a;
+	(void)stack_b;
+	return ;
 }

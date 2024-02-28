@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/26 17:42:37 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/28 14:42:37 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@ int	main(int argc, char **argv)
 
 	if (argc == 1 || argv[1][0] == '\0')
 		return (1);
-	if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	else
-		argv++;
-	if (argv && verify_args(argv) == 1)
-		insert_to_stacks(&stack_a, argv);
-	else
+	else if (!process_args(argc, argv, &stack_a))
 	{
 		ft_printf("Error\n");
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	}
 	if (sorted(&stack_a))
 		return (EXIT_SUCCESS);

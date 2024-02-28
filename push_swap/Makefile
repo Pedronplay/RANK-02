@@ -6,7 +6,7 @@
 #    By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 10:27:26 by pebarbos          #+#    #+#              #
-#    Updated: 2024/02/26 10:46:45 by pedronplay       ###   ########.fr        #
+#    Updated: 2024/02/27 10:55:21 by pedronplay       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ LIBFT		= ./libft/libft.a
 SRCS = push_swap.c \
        verify_args.c \
        insert_to_stacks.c \
-       ./operations/push.c \
        ./operations/rotate_operations.c \
        ./operations/swap.c \
 	   ./operations/algorithm.c \

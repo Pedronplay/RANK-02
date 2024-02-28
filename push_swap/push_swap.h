@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/26 17:32:10 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/02/27 19:38:25 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_stack
 }	t_stack;
 
 // inserting to the stacks
+bool			process_args(int argc, char **argv, t_stack **stack_a);
 struct s_stack	*create(char *nums);
 struct s_stack	insert_to_stacks(struct s_stack **head, char **nums);
 void			insert_to_last(struct s_stack *head, char *nums);
@@ -54,5 +55,6 @@ int				stacksize(t_stack **stack);
 bool			sorted(t_stack **stack);
 void			sort_three(t_stack **stack);
 void			sort_five(t_stack **stack_a, t_stack **stack_b);
+void			big_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif
