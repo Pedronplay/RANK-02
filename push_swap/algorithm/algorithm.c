@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:01:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/27 11:34:50 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/01 12:11:37 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 		sort_five(stack_a, stack_b);
 	else
 		big_sort(stack_a, stack_b);
-	ft_printf("stack size ->%d\n", stacksize(stack_a));
-	printdata(*stack_a);
 }
 
 void	sort_three(t_stack **stack)
@@ -71,7 +69,26 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 
 void	big_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	(void)stack_a;
-	(void)stack_b;
-	return ;
+	push(stack_a, stack_b, 'b');
+	push(stack_a, stack_b, 'b');
+	sort_until_three(stack_a, stack_b);
+
+}
+
+void	sort_until_three(t_stack **stack_a, t_stack **stack_b)
+{
+	printdata(*stack_a);
+	printdata(*stack_b);
+	while (stacksize(stack_a) > 3)
+	{
+		if (get_target_val_b(stack_b, (*stack_a)->val) == (*stack_b)->val)
+			push(stack_a, stack_b, 'b');
+		else 
+			reverse_rotate(stack_b, 'b');
+	}
+	//debugging
+	ft_printf("did it?\n stack b->");
+	printdata(*stack_b);
+	ft_printf("done it\nstack_a ->");
+	printdata(*stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/28 17:06:56 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/01 11:23:50 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void			rotate_both(t_stack **stack_a, t_stack **stack_b);
 void			reverse_rotate(t_stack **stack, char c);
 void			push(t_stack **stack_a, t_stack **stack_b, char c);
 
+//algorithm
+void			sort_three(t_stack **stack);
+void			push_swap(t_stack **stack_a, t_stack **stack_b);
+void			sort_five(t_stack **stack_a, t_stack **stack_b);
+void			big_sort(t_stack **stack_a, t_stack **stack_b);
+void			sort_until_three(t_stack **stack_a, t_stack **stack_b);
+
 //algorithm utils
 int				get_bigest(t_stack **stack);
 int				get_lowest(t_stack**stack);
@@ -54,10 +61,8 @@ int				stacksize(t_stack **stack);
 bool			sorted(t_stack **stack);
 int				get_position(t_stack **stack, int target);
 
-//algorithm
-void			sort_three(t_stack **stack);
-void			push_swap(t_stack **stack_a, t_stack **stack_b);
-void			sort_five(t_stack **stack_a, t_stack **stack_b);
-void			big_sort(t_stack **stack_a, t_stack **stack_b);
+//big sort utils
+int				get_target_val_b(t_stack **stack_b, int current);
+int				get_target_val_a(t_stack **stack_b, int currunt);
 
 #endif
