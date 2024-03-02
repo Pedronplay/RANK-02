@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/01 11:23:50 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/02 17:57:48 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			swap_both(t_stack **stack_a, t_stack **stack_b);
 void			rotate(t_stack **stack, char leter);
 void			rotate_both(t_stack **stack_a, t_stack **stack_b);
 void			reverse_rotate(t_stack **stack, char c);
+void			reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 void			push(t_stack **stack_a, t_stack **stack_b, char c);
 
 //algorithm
@@ -63,6 +64,9 @@ int				get_position(t_stack **stack, int target);
 
 //big sort utils
 int				get_target_val_b(t_stack **stack_b, int current);
-int				get_target_val_a(t_stack **stack_b, int currunt);
+int				get_target_val_a(t_stack **stack_b, int current);
+int				get_cheapest(t_stack **stack_a, t_stack **stack_b);
+int				get_total(t_stack **stack_a, t_stack **stack_b, int cal);
+int				targetdist(t_stack	**stack, int val);
 
 #endif
