@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:49:21 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/03/02 17:47:04 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/02 18:17:17 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ int	targetdist(t_stack **stack, int val)
 		distance = get_position(stack, val);
 	else
 		distance = get_position(stack, val) - stacksize(stack);
-	return(distance);
+	return (distance);
 }
