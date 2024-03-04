@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/29 12:05:05 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/04 17:56:37 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
 	free_stack(stack_a);
+}
+
+void	push_swap(t_stack **stack_a, t_stack **stack_b)
+{
+	if (stacksize(stack_a) == 2)
+		swap_a(stack_a);
+	else if (stacksize(stack_a) == 3)
+		sort_three(stack_a);
+	else if (stacksize(stack_a) <= 5)
+		sort_five(stack_a, stack_b);
+	else
+		big_sort(stack_a, stack_b);
 }
 
 void	printdata(t_stack *head)

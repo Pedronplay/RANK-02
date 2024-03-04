@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:29:41 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/27 10:54:18 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/04 09:38:50 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,21 @@ void	rotate(t_stack **stack, char leters)
 
 void	reverse_rotate(t_stack **stack, char leters)
 {
-	t_stack	*temp;
+	t_stack	*second_last;
 	t_stack	*last;
 
-	temp = *stack;
+	second_last = *stack;
 	last = *stack;
 	while (last->next)
+	{
+		second_last = last;
 		last = last->next;
-	last->next = temp;
-	temp->prev = last;
-	*stack = last;
-	last->prev->next = NULL;
+	}
+	second_last->next = NULL;
+	last->next = (*stack);
+	(*stack)->prev = last;
 	last->prev = NULL;
+	*stack = last;
 	if (leters == 'a')
 		ft_printf("rra\n");
 	else if (leters == 'b')

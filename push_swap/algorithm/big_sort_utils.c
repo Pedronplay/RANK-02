@@ -6,13 +6,13 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:49:21 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/03/02 18:17:17 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/04 17:55:49 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	get_target_val_b(t_stack **stack_b, int current)
+int	get_tar_val_b(t_stack **stack_b, int current)
 {
 	t_stack	*head;
 	int		target;
@@ -30,7 +30,7 @@ int	get_target_val_b(t_stack **stack_b, int current)
 	return (target);
 }
 
-int	get_target_val_a(t_stack **stack_a, int current)
+int	get_tar_val_a(t_stack **stack_a, int current)
 {
 	t_stack	*head;
 	int		target;
@@ -80,7 +80,18 @@ int	get_total(t_stack **stack_a, t_stack **stack_b, int val)
 	int	total;
 
 	cost_a = targetdist(stack_a, val);
-	cost_b = targetdist(stack_b, get_target_val_b(stack_b, val));
+	cost_b = targetdist(stack_b, get_tar_val_b(stack_b, val));
+	if ((cost_a > 0 && cost_b > 0) || (cost_a < 0 && cost_b < 0))
+	{
+		if (cost_a > cost_b && cost_a > 0)
+			return (cost_a);
+		else if (cost_a < cost_b && cost_a < 0)
+			return (cost_a * -1);
+		if (cost_a < cost_b && cost_b > 0)
+			return (cost_b);
+		else if (cost_a > cost_b && cost_b < 0)
+			return (cost_b * -1);
+	}
 	if (cost_a < 0)
 		cost_a *= -1;
 	if (cost_b < 0)
