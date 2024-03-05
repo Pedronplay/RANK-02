@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/05 17:51:47 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/05 19:08:20 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	}
 	if (sorted(&stack_a))
+	{
+		free_stack(stack_a);
 		return (EXIT_SUCCESS);
+	}
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
 	free_stack(stack_a);
