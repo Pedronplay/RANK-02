@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/04 16:34:15 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/05 17:41:53 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ typedef struct s_stack
 void			push_swap(t_stack **stack_a, t_stack **stack_b);
 
 // inserting to the stacks
-bool			process_args(int argc, char **argv, t_stack **stack_a);
 struct s_stack	*create(char *nums);
 struct s_stack	insert_to_stacks(struct s_stack **head, char **nums);
 void			insert_to_last(struct s_stack *head, char *nums);
 void			printdata(t_stack *head);
+void			free_stack(t_stack *stack);
 
 // veriyfy
+bool			process_args(int argc, char **argv, t_stack **stack_a);
 int				verify_numbers(char **args);
 int				verify_max(char **args);
 int				verify_args(char **args);
-void			free_stack(t_stack *stack);
 
 //operations 
 void			swap(t_stack **stack);

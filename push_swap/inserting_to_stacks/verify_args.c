@@ -6,11 +6,40 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:19:31 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/28 15:35:58 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/05 17:59:38 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+bool	process_args(int argc, char **argv, t_stack **stack_a)
+{
+	char	**temp;
+	size_t	i;
+
+	temp = NULL;
+	i = 0;
+	if (argc == 2)
+		temp = ft_split(argv[1], ' ');
+	else if (argc > 2)
+		argv++;
+	if (!temp && verify_args(argv))
+		insert_to_stacks(stack_a, argv);
+	else if (temp && verify_args(temp))
+		insert_to_stacks(stack_a, temp);
+	if (temp)
+	{
+		while (temp[i])
+		{
+			free(temp[i]);
+			i++;
+		}
+		free(temp);
+	}
+	if (!stack_a || !(*stack_a))
+		return (false);
+	return (true);
+}
 
 int	verify_numbers(char **args)
 {
@@ -23,7 +52,7 @@ int	verify_numbers(char **args)
 		j = 0;
 		while (args[i][j])
 		{
-			if ((args[i][j] == '-') || args[i][j] == '+')
+			if (j == 0 && ((args[i][j] == '-') || args[i][j] == '+'))
 				j++;
 			if (!ft_isdigit(args[i][j]))
 				return (0);
@@ -33,6 +62,7 @@ int	verify_numbers(char **args)
 	}
 	return (1);
 }
+
 
 int	verify_max(char **args)
 {
@@ -71,21 +101,11 @@ int	verify_dupl(char **args)
 
 int	verify_args(char **args)
 {
-	if (args == NULL || args[0] == NULL)
+	if (args == NULL || args[0] == NULL){
 		return (0);
+		ft_printf("HORSEFEATHERS");
+		}
 	if (verify_numbers(args) && verify_max(args) && verify_dupl(args))
 		return (1);
 	return (0);
-}
-
-void	free_stack(t_stack *stack)
-{
-	t_stack	*temp;
-
-	while (stack != NULL)
-	{
-		temp = stack;
-		stack = stack->next;
-		free(temp);
-	}
 }
