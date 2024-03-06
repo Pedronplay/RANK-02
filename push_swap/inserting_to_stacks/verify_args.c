@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:19:31 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/05 17:59:38 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 14:55:38 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	verify_numbers(char **args)
 	return (1);
 }
 
-
 int	verify_max(char **args)
 {
 	size_t	i;
@@ -101,10 +100,8 @@ int	verify_dupl(char **args)
 
 int	verify_args(char **args)
 {
-	if (args == NULL || args[0] == NULL){
+	if (args == NULL || args[0] == NULL)
 		return (0);
-		ft_printf("HORSEFEATHERS");
-		}
 	if (verify_numbers(args) && verify_max(args) && verify_dupl(args))
 		return (1);
 	return (0);

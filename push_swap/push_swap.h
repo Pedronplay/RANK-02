@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:09:40 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:53 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 11:48:54 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int				verify_args(char **args);
 void			swap(t_stack **stack);
 void			swap_a(t_stack **stack);
 void			swap_b(t_stack **stack);
-void			swap_both(t_stack **stack_a, t_stack **stack_b);
+void			swap_both(t_stack **stack_a, t_stack **stack_b, char l);
 void			rotate(t_stack **stack, char leter);
-void			rotate_both(t_stack **stack_a, t_stack **stack_b);
+void			rotate_both(t_stack **stack_a, t_stack **stack_b, char l);
 void			reverse_rotate(t_stack **stack, char c);
-void			reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
+void			reverse_rot_both(t_stack **stack_a, t_stack **stack_b, char l);
 void			push(t_stack **stack_a, t_stack **stack_b, char c);
 
 //algorithm

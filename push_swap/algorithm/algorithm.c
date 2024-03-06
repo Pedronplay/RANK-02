@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:01:55 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/03/04 17:56:05 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 11:48:06 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	sort_until_three(t_stack **stack_a, t_stack **stack_b)
 		}
 		if (targetdist(stack_a, cheap) < 0
 			&& targetdist(stack_b, get_tar_val_b(stack_b, cheap)) < 0)
-			reverse_rotate_both(stack_a, stack_b);
+			reverse_rot_both(stack_a, stack_b, 'y');
 		else if (targetdist(stack_a, cheap) > 0
 			&& targetdist(stack_b, get_tar_val_b(stack_b, cheap)) > 0)
-			rotate_both(stack_a, stack_b);
+			rotate_both(stack_a, stack_b, 'y');
 		else if (targetdist(stack_a, cheap) < 0)
 			reverse_rotate(stack_a, 'a');
 		else if (targetdist(stack_b, get_tar_val_b(stack_b, cheap)) < 0)
@@ -113,10 +113,10 @@ void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 			cheap = get_cheapest(stack_b, stack_a);
 			if (targetdist(stack_b, cheap) < 0
 				&& targetdist(stack_a, get_tar_val_a(stack_a, cheap)) < 0)
-				reverse_rotate_both(stack_b, stack_a);
+				reverse_rot_both(stack_b, stack_a, 'y');
 			else if (targetdist(stack_b, cheap) > 0
 				&& targetdist(stack_a, get_tar_val_a(stack_a, cheap)) > 0)
-				rotate_both(stack_b, stack_a);
+				rotate_both(stack_b, stack_a, 'y');
 			else if (targetdist(stack_b, cheap) < 0)
 				reverse_rotate(stack_b, 'b');
 			else if (targetdist(stack_a, get_tar_val_a(stack_a, cheap)) < 0)

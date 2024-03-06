@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:18 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/02/23 17:46:49 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 11:44:44 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	swap(t_stack **stack)
 	*stack = nextnode;
 }
 
-void	swap_both(t_stack **stack_a, t_stack **stack_b)
+void	swap_both(t_stack **stack_a, t_stack **stack_b, char l)
 {
 	if (*stack_a && stack_b)
 	{
@@ -36,6 +36,8 @@ void	swap_both(t_stack **stack_a, t_stack **stack_b)
 	}
 	else
 		return ;
+	if (l == 'y')
+		ft_printf("rrr\n");
 }
 
 void	swap_a(t_stack **stack_a)

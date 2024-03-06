@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:33:30 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:20 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 14:56:12 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,13 @@ void	insert_to_last(struct s_stack *head, char *nums)
 	head->next = node;
 	node->prev = head;
 }
+
 void	free_stack(t_stack *stack)
 {
 	t_stack	*temp;
 
+	if (!stack)
+		return ;
 	while (stack != NULL)
 	{
 		temp = stack;

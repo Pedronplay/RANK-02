@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:16:25 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/05 19:08:20 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 14:53:43 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 	else
 		big_sort(stack_a, stack_b);
 }
-
+/*
 void	printdata(t_stack *head)
 {
 	struct s_stack	*temp;
@@ -57,4 +57,4 @@ void	printdata(t_stack *head)
 		temp = temp->next;
 	}
 	ft_printf("\n");
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:29:41 by pedronplay        #+#    #+#             */
-/*   Updated: 2024/03/04 09:38:50 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/03/06 12:04:38 by pedronplay       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,30 @@ void	reverse_rotate(t_stack **stack, char leters)
 		(void)leters;
 }
 
-void	rotate_both(t_stack **stack_a, t_stack **stack_b)
+void	rotate_both(t_stack **stack_a, t_stack **stack_b, char l)
 {
 	if (*stack_a && *stack_b)
 	{
 		rotate(stack_a, 'n');
 		rotate(stack_b, 'n');
-		ft_printf("rr\n");
 	}
 	else
 		return ;
+	if (l == 'y')
+		ft_printf("rr\n");
 }
 
-void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rot_both(t_stack **stack_a, t_stack **stack_b, char l)
 {
 	if (*stack_a && *stack_b)
 	{
 		reverse_rotate(stack_a, 'n');
 		reverse_rotate(stack_b, 'n');
-		ft_printf("rrr\n");
 	}
 	else
 		return ;
+	if (l == 'y')
+		ft_printf("rrr\n");
 }
 
 void	push(t_stack **stack_sender, t_stack **stack_receiver, char c)
