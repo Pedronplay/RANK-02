@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	stack_a = NULL;
 	if (argc == 1)
 		return (1);
 	else if (!process_args(argc, argv, &stack_a) || argv[1] == NULL)
