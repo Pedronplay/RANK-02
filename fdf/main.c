@@ -6,31 +6,39 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:20:09 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/13 15:51:51 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:20:56 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./minilibx-linux/mlx.h"
+#include "./includes/fdf.h"
+
+void	close_window(void *param)
+{
+	t_fdf	*fdf;
+
+	fdf = (t_fdf *)param;
+	mlx_destroy_window(fdf->mlx, fdf->win);
+	mlx_destroy_display(fdf->mlx);
+	free(fdf->mlx);
+	exit (0);
+}
 
 int	handle_input(int key, void *param)
 {
-	(void)key;
-	(void)param;
+	t_fdf	*fdf;
+
+	fdf = (t_fdf *)param;
+	if (key == ESC_KEY)
+		close_window(fdf);
 	return (0);
 }
+
 int	main(void)
 {
-	void	*mlx;
-	void	*win;
+	t_fdf	fdf;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 600, "Window");
-	mlx_key_hook(win, handle_input, NULL);
-	mlx_loop(mlx);
-	if (!mlx)
-		return (1);
-	mlx_destroy_display(mlx);
-	free(mlx);
-	return (0);
+	fdf.mlx = mlx_init();
+	fdf.win = mlx_new_window(fdf.mlx, 800, 600, "FDF Program Runing");
+	mlx_key_hook(fdf.win, handle_input, &fdf);
+	mlx_loop(fdf.mlx);
 }
