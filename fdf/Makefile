@@ -6,7 +6,7 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 12:37:06 by pebarbos          #+#    #+#              #
-#    Updated: 2024/03/13 16:13:23 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/03/20 12:53:25 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,19 @@
 	#Compiling Variables#
 CC		 = cc
 CFLAGS	 = -Wall -Wextra -Werror
-MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie -fsanitize=address
+MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie #-fsanitize=address
 
 	#Names#
 NAME	= fdf
 # BONUS	= 
 
 	#Library Variables#
-LIBFT		= ./libft/libft.a
+LIBFT		= ./libft/libft.a 
 
 	#Sources#
-SRCS = main.c
+SRCS = main.c \
+		./src/verify_maps.c
+
 
 # BONUS_SRCS = 
 
@@ -52,7 +54,7 @@ re: fclean all
 ################# MAKING MAIN PROGRAM ##################################
 
 $(NAME): $(OBJS)
-	$(MAKE)  -C ./minilibx-linux
+	$(MAKE) -C ./minilibx-linux
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft $(MINILXFLAGS)
 
 ################################ MAKING BONUS PROGRAMS #################

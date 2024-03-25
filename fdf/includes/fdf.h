@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/19 16:12:30 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:50:49 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include <math.h>
+# include <stdbool.h>
 
 typedef struct s_fdf
 {
@@ -23,6 +24,15 @@ typedef struct s_fdf
 	void	*win;
 }	t_fdf;
 
+typedef struct s_map
+{
+	int	width;
+	int	height;
+}	t_map;
+
 # define ESC_KEY 65307
 
-# endif
+//			verify maps       //
+bool	ft_handle_map(int argc, char **argv, t_map map);
+
+#endif
