@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/03/25 16:50:49 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/03 13:25:14 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdbool.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
+//			structs				//
 typedef struct s_fdf
 {
 	void	*mlx;
@@ -26,9 +29,20 @@ typedef struct s_fdf
 
 typedef struct s_map
 {
-	int	width;
-	int	height;
+	int	w; // thinking how im  going to store this data
+	int	height; // need x,y,z and collor
+	int	collor;
 }	t_map;
+
+typedef struct s_yaxis
+{
+	int	z;
+}	t_yaxis;
+
+typedef struct s_xaxis
+{
+	int	z;
+}	t_xaxis;
 
 # define ESC_KEY 65307
 

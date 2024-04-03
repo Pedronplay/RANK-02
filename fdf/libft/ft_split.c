@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedronplay <pedronplay@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:33:22 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/02/27 21:38:35 by pedronplay       ###   ########.fr       */
+/*   Updated: 2024/04/03 13:37:33 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ char	**ft_split(char const *s, char c)
 	if (!tab)
 		return (NULL);
 	tab = ft_tudo(s, tab, c, j);
+	if (!tab)
+		return (NULL);
 	return (tab);
 }
 /*
