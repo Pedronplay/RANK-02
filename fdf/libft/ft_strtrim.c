@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pebarbos <pebarbos@student.42porto.co      +#+  +:+       +#+        */
+/*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:56 by pebarbos          #+#    #+#             */
-/*   Updated: 2023/10/17 15:28:00 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:29:09 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

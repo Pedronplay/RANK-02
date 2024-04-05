@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:10:04 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/09 20:19:25 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:56:56 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,34 @@ char	*ft_trim(char *tmps)
 	return (trimed);
 }
 
+char	*ft_strjoin_get(char *s1, char *s2)
+{
+	char	*str;
+	size_t	j;
+	size_t	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	j = ft_strlen(s1) + ft_strlen(s2);
+	str = ft_calloc(sizeof(char), (j + 1));
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		str[i++] = s2[j++];
+	}
+	str[i] = '\0';
+	free(s1);
+	return (str);
+}
+
 char	*ft_read_file(int fd, char *tmps)
 {
 	char	*buffer_data;
@@ -94,7 +122,7 @@ char	*ft_read_file(int fd, char *tmps)
 		if (i == -1)
 			break ;
 		buffer_data[i] = '\0';
-		tmps = ft_strjoin(tmps, buffer_data);
+		tmps = ft_strjoin_get(tmps, buffer_data);
 		if (ft_strchr(buffer_data, '\n'))
 			break ;
 	}

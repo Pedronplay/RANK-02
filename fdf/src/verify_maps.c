@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/03 13:45:30 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:51:43 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,39 +28,30 @@ int	count_file_verify_lines(char *file)
 	int fd;
 	int	i;
 	char *line;
-	char *temp;
 	char **splited;
+	char *temp;
 	size_t size;
 
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	line = get_next_line(fd);
-	while (line)
+	while ((line = get_next_line(fd)) != NULL)
 	{
-		temp = line;
-		line = ft_strtrim(line, "\n");
-		free(temp);
- 		splited = ft_split(line, ' ');
-		free(line);
-		if (splited == NULL)
-			continue ;
-		if (*splited == NULL)
-		{
-			free(splited);
-			continue ;
-		}
+		temp = ft_strtrim(line, "\n");
+		splited = ft_split(temp, ' ');
 		size = 0;
 		while (splited[size])
 		{
-			printf("->%s", splited[size]);
+			free(splited[size]);
 			size++;
 		}
-		printf("\n");
 		i++;
-		line = get_next_line(fd);
+		free(temp);
+		free(line);
+		free(splited);
 	}
+	close(fd);
 	ft_printf("lines->%i\n", i);
 	ft_printf("elements->%i", size);
 	return (i);
