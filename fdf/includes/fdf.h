@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/03 13:25:14 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:51:31 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,29 @@
 # include <X11/keysym.h>
 
 //			structs				//
-typedef struct s_fdf
+typedef struct s_vals
 {
-	void	*mlx;
-	void	*win;
-}	t_fdf;
+	int	**z;
+	int	clrcodes;
+}	t_vals;
 
 typedef struct s_map
 {
 	int	w; // thinking how im  going to store this data
 	int	height; // need x,y,z and collor
-	int	collor;
 }	t_map;
 
-typedef struct s_yaxis
+typedef struct s_fdf
 {
-	int	z;
-}	t_yaxis;
+	void	*mlx;
+	void	*win;
+	t_map	mapvals;
+}	t_fdf;
 
-typedef struct s_xaxis
-{
-	int	z;
-}	t_xaxis;
 
 # define ESC_KEY 65307
 
 //			verify maps       //
-bool	ft_handle_map(int argc, char **argv, t_map map);
+bool	ft_handle_map(int argc, char **argv, t_map *map);
 
 #endif

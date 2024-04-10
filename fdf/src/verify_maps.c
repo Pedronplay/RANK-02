@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/05 16:51:43 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:09:30 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,52 +23,68 @@ bool	ft_filename(char *name, char *extension)
 		return (ft_strncmp(found, extension, 4) == 0);
 }
 
-int	count_file_verify_lines(char *file)
+int	ft_count_words(char *l)
+{
+	int	i;
+	int	words;
+
+	i = 0;
+	words = 0;
+	if (!l)
+		return (0);
+	while (l[i])
+	{
+		while (l[i] && (l[i] == ' ' || (l[i] >= 0 && l[i] <= 31)))
+			i++;
+		if (!l[i])
+			break ;
+		while (l[i] && l[i] != ' ' && l[i] != '\n')
+			i++;
+		words++;
+	}
+	return (words);
+}
+
+int	count_file_verify_lines(char *file, t_map *map)
 {
 	int fd;
 	int	i;
 	char *line;
-	char **splited;
-	char *temp;
-	size_t size;
-
+	
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	map->height = ft_count_words(line);
+	while (line)
 	{
-		temp = ft_strtrim(line, "\n");
-		splited = ft_split(temp, ' ');
-		size = 0;
-		while (splited[size])
+		if (map->height != ft_count_words(line))
 		{
-			free(splited[size]);
-			size++;
+			i = -1;
+			break;
 		}
-		i++;
-		free(temp);
 		free(line);
-		free(splited);
+		line = get_next_line(fd);
+		i++;
 	}
 	close(fd);
-	ft_printf("lines->%i\n", i);
-	ft_printf("elements->%i", size);
 	return (i);
 }
 
-bool	ft_readmap(char *file, t_map map)
+bool	ft_readmap(char *file, t_map *map)
 {
-	(void)map;
 	int n;
 
-	n = count_file_verify_lines(file);
+	n = count_file_verify_lines(file, map);
 	if (n == -1)
 		return (false);
-	return (true);
+	map->w = n;
+	ft_printf("number%i\n", map->w);
+	return (true); // save the data and then do that
 }
 
-bool	ft_handle_map(int argc, char **argv, t_map	map)
+bool	ft_handle_map(int argc, char **argv, t_map	*map)
 {
 	if (argc != 2)
 		ft_printf("Usage : ./fdf_linux <filename>\n");
@@ -77,6 +93,6 @@ bool	ft_handle_map(int argc, char **argv, t_map	map)
 	else if (!ft_readmap(argv[1], map))
 		ft_printf("The file apears to not exist or be invalid\n");
 	else
-		return (1);
+	{	ft_printf("w ->%i h->%i", map->height, map->w);return (1);}
 	return (0);
 }

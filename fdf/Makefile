@@ -6,14 +6,14 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 12:37:06 by pebarbos          #+#    #+#              #
-#    Updated: 2024/03/20 12:53:25 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/04/10 16:40:52 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 	#Compiling Variables#
 CC		 = cc
-CFLAGS	 = -Wall -Wextra -Werror
+CFLAGS	 = -Wall -Wextra -Werror -g
 MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie #-fsanitize=address
 
 	#Names#
