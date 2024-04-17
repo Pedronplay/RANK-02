@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/10 17:09:30 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:08:43 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	count_file_verify_lines(char *file, t_map *map)
 	if (fd == -1)
 		return (-1);
 	line = get_next_line(fd);
-	map->height = ft_count_words(line);
+	(*map).height = ft_count_words(line);
 	while (line)
 	{
 		if (map->height != ft_count_words(line))
@@ -80,7 +80,6 @@ bool	ft_readmap(char *file, t_map *map)
 	if (n == -1)
 		return (false);
 	map->w = n;
-	ft_printf("number%i\n", map->w);
 	return (true); // save the data and then do that
 }
 

@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/10 16:51:31 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:42:04 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ typedef struct s_fdf
 {
 	void	*mlx;
 	void	*win;
+	t_map	map;
 	t_map	mapvals;
 }	t_fdf;
-
 
 # define ESC_KEY 65307
 

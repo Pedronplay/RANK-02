@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:15:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/01/31 16:30:27 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:44:03 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char		*get_next_line(int fd);
 char		*ft_get_line(char *tmps);
 char		*ft_trim(char *tmps);
 char		*ft_read_file(int fd, char *tmps);
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
