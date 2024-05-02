@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/17 19:42:04 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:42:12 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct s_vals
 {
 	int	**z;
-	int	clrcodes;
+	int	**clrcodes;
 }	t_vals;
 
 typedef struct s_map
@@ -38,12 +38,12 @@ typedef struct s_fdf
 	void	*mlx;
 	void	*win;
 	t_map	map;
-	t_map	mapvals;
+	t_vals	mapvals;
 }	t_fdf;
 
 # define ESC_KEY 65307
 
 //			verify maps       //
-bool	ft_handle_map(int argc, char **argv, t_map *map);
+bool	ft_handle_map(int argc, char **argv, t_fdf *map);
 
 #endif

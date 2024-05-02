@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/16 20:08:43 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:15:08 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,67 @@ bool	ft_readmap(char *file, t_map *map)
 	return (true); // save the data and then do that
 }
 
-bool	ft_handle_map(int argc, char **argv, t_map	*map)
+void	map_alloc(int height, int width, t_fdf fdf)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+	fdf.mapvals.clrcodes = malloc(sizeof(float *) * fdf.map.height);
+	fdf.mapvals.clrcodes = malloc(sizeof(int *) * fdf.map.height);
+	while (i <= height)
+	{
+		while (j <= width)
+		{
+				fdf.mapvals.clrcodes = malloc(sizeof(float *) * fdf.map.w);
+				fdf.mapvals.clrcodes = malloc(sizeof(int *) * fdf.map.w);
+			j++;
+		}
+		i++;
+	}
+}
+void	save_map_vals(t_fdf fdf, char *file)
+{
+	int fd;
+	int	i;
+	int	j;
+	char *line;
+	char **splited;
+
+	j = 0;
+	i = 0;
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		splited = ft_split(line, " ");
+		while(i < fdf.map.w)
+		{
+			fill_matrix(i, j, line);
+			i++;
+		}
+		free(line);
+		line = get_next_line(fd);
+		j++;
+	}
+	close(fd);
+}
+
+bool	ft_handle_map(int argc, char **argv, t_fdf	*fdf)
 {
 	if (argc != 2)
 		ft_printf("Usage : ./fdf_linux <filename>\n");
 	else if (!ft_filename(argv[1], ".fdf"))
 		ft_printf("Only .fdf files are allowed\n");
-	else if (!ft_readmap(argv[1], map))
+	else if (!ft_readmap(argv[1], &fdf->map))
 		ft_printf("The file apears to not exist or be invalid\n");
 	else
-	{	ft_printf("w ->%i h->%i", map->height, map->w);return (1);}
+	{
+		map_alloc(fdf->map.height, fdf->map.w, *fdf);
+		save_map_vals(*fdf, argv[1]);
+		ft_printf("w ->%i h->%i", fdf->map.height, fdf->map.w);
+		return (1);
+	}
 	return (0);
 }

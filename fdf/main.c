@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:20:09 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/04/17 19:59:49 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:25:26 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ int	handle_input(int key, void *param)
 int	main(int argc, char **argv)
 {
 	t_fdf	fdf;
-	//t_map	map;
-	t_vals	mapvals;
 
-	//fdf = malloc(sizeof(struct s_fdf));
-	(void)mapvals;
-	if (ft_handle_map(argc, argv, &fdf.map))
+	if (ft_handle_map(argc, argv, &fdf))
 	{
 		fdf.mlx = mlx_init();
 		fdf.win = mlx_new_window(fdf.mlx, 600, 600, "FDF Program Runing");
