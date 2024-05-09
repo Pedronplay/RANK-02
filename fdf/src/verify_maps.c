@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/02 20:15:08 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:15:36 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int	count_file_verify_lines(char *file, t_map *map)
 	if (fd == -1)
 		return (-1);
 	line = get_next_line(fd);
-	(*map).height = ft_count_words(line);
+	(*map).w = ft_count_words(line);
 	while (line)
 	{
-		if (map->height != ft_count_words(line))
+		if (map->w != ft_count_words(line))
 		{
 			i = -1;
 			break;
@@ -79,7 +79,7 @@ bool	ft_readmap(char *file, t_map *map)
 	n = count_file_verify_lines(file, map);
 	if (n == -1)
 		return (false);
-	map->w = n;
+	map->height = n;
 	return (true); // save the data and then do that
 }
 
@@ -103,6 +103,11 @@ void	map_alloc(int height, int width, t_fdf fdf)
 		i++;
 	}
 }
+void	fill_matrix(int i, int j, char *data)
+{
+	(void)i; (void)j; (void)data;
+}
+
 void	save_map_vals(t_fdf fdf, char *file)
 {
 	int fd;
@@ -115,14 +120,17 @@ void	save_map_vals(t_fdf fdf, char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (line)
+	while (j < fdf.map.height)
 	{
-		splited = ft_split(line, " ");
+	//	ft_printf(" %s", line);
+		splited = ft_split(line, ' ');
 		while(i < fdf.map.w)
 		{
-			fill_matrix(i, j, line);
+			ft_printf("  %s", splited[i]);
+			fill_matrix(i, j, splited[j]);  //estou aqui
 			i++;
 		}
+		i = 1;
 		free(line);
 		line = get_next_line(fd);
 		j++;
@@ -142,7 +150,7 @@ bool	ft_handle_map(int argc, char **argv, t_fdf	*fdf)
 	{
 		map_alloc(fdf->map.height, fdf->map.w, *fdf);
 		save_map_vals(*fdf, argv[1]);
-		ft_printf("w ->%i h->%i", fdf->map.height, fdf->map.w);
+		ft_printf("w ->%i h->%i", fdf->map.w, fdf->map.height);
 		return (1);
 	}
 	return (0);
