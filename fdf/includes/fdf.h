@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/02 18:42:12 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:15:57 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 //			structs				//
 typedef struct s_vals
 {
-	int	**z;
+	float	**z;
 	int	**clrcodes;
 }	t_vals;
 

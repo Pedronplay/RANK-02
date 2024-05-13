@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/09 18:15:36 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:15:27 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,29 +83,34 @@ bool	ft_readmap(char *file, t_map *map)
 	return (true); // save the data and then do that
 }
 
-void	map_alloc(int height, int width, t_fdf fdf)
+void map_alloc(int height, int width, t_fdf *fdf)
 {
-	int	i;
-	int j;
+    int i = 0;
 
-	i = 0;
-	j = 0;
-	fdf.mapvals.clrcodes = malloc(sizeof(float *) * fdf.map.height);
-	fdf.mapvals.clrcodes = malloc(sizeof(int *) * fdf.map.height);
-	while (i <= height)
-	{
-		while (j <= width)
-		{
-				fdf.mapvals.clrcodes = malloc(sizeof(float *) * fdf.map.w);
-				fdf.mapvals.clrcodes = malloc(sizeof(int *) * fdf.map.w);
-			j++;
-		}
-		i++;
-	}
+    fdf->mapvals.clrcodes = (int **)malloc(sizeof(float *) * height);
+    fdf->mapvals.z = (float **)malloc(sizeof(float *) * height);
+    while (i < width)
+    {
+        fdf->mapvals.clrcodes[i] = (int *)malloc(sizeof(int) * width);
+        fdf->mapvals.z[i] = (float *)malloc(sizeof(float) * width);
+        i++;
+    }
 }
-void	fill_matrix(int i, int j, char *data)
+
+void	fill_matrix(int i, int j, char *data, t_fdf fdf)
 {
-	(void)i; (void)j; (void)data;
+	int num;
+	float colr;
+
+	colr = #FFFFFF;
+	if (!ft_strnstr(data, "\n", 4))
+	{
+		if (!ft_strnstr(data, ",", 4))
+
+		num = ft_atoi(data);
+		ft_printf("%i", num);
+		fdf.mapvals.z[i][j] = num;
+	}
 }
 
 void	save_map_vals(t_fdf fdf, char *file)
@@ -122,15 +127,15 @@ void	save_map_vals(t_fdf fdf, char *file)
 	line = get_next_line(fd);
 	while (j < fdf.map.height)
 	{
-	//	ft_printf(" %s", line);
 		splited = ft_split(line, ' ');
 		while(i < fdf.map.w)
 		{
-			ft_printf("  %s", splited[i]);
-			fill_matrix(i, j, splited[j]);  //estou aqui
+			fill_matrix(i, j, splited[i], fdf);  //estou aqui
+			ft_printf(" ");
 			i++;
 		}
-		i = 1;
+		ft_printf("\n");
+		i = 0;
 		free(line);
 		line = get_next_line(fd);
 		j++;
@@ -148,7 +153,7 @@ bool	ft_handle_map(int argc, char **argv, t_fdf	*fdf)
 		ft_printf("The file apears to not exist or be invalid\n");
 	else
 	{
-		map_alloc(fdf->map.height, fdf->map.w, *fdf);
+		map_alloc(fdf->map.height, fdf->map.w, fdf);
 		save_map_vals(*fdf, argv[1]);
 		ft_printf("w ->%i h->%i", fdf->map.w, fdf->map.height);
 		return (1);
