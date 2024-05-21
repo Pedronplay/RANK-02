@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/13 15:15:27 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:46:35 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,20 @@ void map_alloc(int height, int width, t_fdf *fdf)
 void	fill_matrix(int i, int j, char *data, t_fdf fdf)
 {
 	int num;
-	float colr;
+	int colr;
+	char **colrs;
 
-	colr = #FFFFFF;
+	num = 0;
+	colr = 0xffffff;
 	if (!ft_strnstr(data, "\n", 4))
 	{
-		if (!ft_strnstr(data, ",", 4))
-
+		if (ft_strnstr(data, ",", 4))
+		{
+			colrs = ft_split(data, ',');
+			ft_printf("%s", colrs[1]);
+			colr = colrs[1];
+			ft_printf("%i", colr);
+		}
 		num = ft_atoi(data);
 		ft_printf("%i", num);
 		fdf.mapvals.z[i][j] = num;
