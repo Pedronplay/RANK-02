@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/13 15:15:57 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/22 20:14:42 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 //			structs				//
 typedef struct s_vals
 {
-	float	**z;
+	int	**z;
 	int	**clrcodes;
 }	t_vals;
 
 typedef struct s_map
 {
-	int	w; // thinking how im  going to store this data
-	int	height; // need x,y,z and collor
+	int	w; 
+	int	height; 
 }	t_map;
 
 typedef struct s_fdf

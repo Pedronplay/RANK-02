@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/21 17:46:35 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/22 20:22:33 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	count_file_verify_lines(char *file, t_map *map)
 	int	i;
 	char *line;
 	
-	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	line = get_next_line(fd);
+	i = 1;
 	(*map).w = ft_count_words(line);
 	while (line)
 	{
@@ -85,35 +85,56 @@ bool	ft_readmap(char *file, t_map *map)
 
 void map_alloc(int height, int width, t_fdf *fdf)
 {
-    int i = 0;
+	int i = 0;
 
-    fdf->mapvals.clrcodes = (int **)malloc(sizeof(float *) * height);
-    fdf->mapvals.z = (float **)malloc(sizeof(float *) * height);
-    while (i < width)
-    {
-        fdf->mapvals.clrcodes[i] = (int *)malloc(sizeof(int) * width);
-        fdf->mapvals.z[i] = (float *)malloc(sizeof(float) * width);
-        i++;
-    }
+	fdf->mapvals.clrcodes = malloc(sizeof(int *) * height);
+	fdf->mapvals.z = malloc(sizeof(int *) * height);
+	while (i < width)
+	{
+		fdf->mapvals.clrcodes[i] = malloc(sizeof(int) * width);
+		fdf->mapvals.z[i] = malloc(sizeof(int) * width);
+		i++;
+	}
+}
+int	atoi_hexa(char *str)
+{
+	int	i;
+	int	num;
+
+	i = 0;
+	num = 1;
+	while (str[i] != 'x')
+		i++;
+	i++;	
+	while (str[i] != '\0')
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			num += str[i] - '0';
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			num *= str[i] - 'a' + 11;
+		else if(str[i] >= 'A' && str[i] <= 'F')
+			num *= str[i] - 'A' + 11;
+		i++;
+	}
+	return(num - 1);
 }
 
-void	fill_matrix(int i, int j, char *data, t_fdf fdf)
+void	fill_map(int i, int j, char *data, t_fdf fdf)
 {
 	int num;
-	int colr;
 	char **colrs;
 
 	num = 0;
-	colr = 0xffffff;
 	if (!ft_strnstr(data, "\n", 4))
 	{
 		if (ft_strnstr(data, ",", 4))
 		{
 			colrs = ft_split(data, ',');
-			ft_printf("%s", colrs[1]);
-			colr = colrs[1];
-			ft_printf("%i", colr);
+			fdf.mapvals.clrcodes[i][j] = atoi_hexa(colrs[1]);
+			ft_printf("%i", fdf.mapvals.clrcodes[i][j]);
 		}
+		else
+			fdf.mapvals.clrcodes[i][j] = 0xffffff;
 		num = ft_atoi(data);
 		ft_printf("%i", num);
 		fdf.mapvals.z[i][j] = num;
@@ -132,20 +153,20 @@ void	save_map_vals(t_fdf fdf, char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (j < fdf.map.height)
+	while (i < fdf.map.height)
 	{
 		splited = ft_split(line, ' ');
-		while(i < fdf.map.w)
+		while(j < fdf.map.w)
 		{
-			fill_matrix(i, j, splited[i], fdf);  //estou aqui
+			fill_map(i, j, splited[j], fdf);
 			ft_printf(" ");
-			i++;
+			j++;
 		}
 		ft_printf("\n");
-		i = 0;
+		j = 0;
 		free(line);
 		line = get_next_line(fd);
-		j++;
+		i++;
 	}
 	close(fd);
 }
