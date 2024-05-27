@@ -6,7 +6,7 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 12:37:06 by pebarbos          #+#    #+#              #
-#    Updated: 2024/04/10 16:40:52 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/05/27 19:23:03 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBFT		= ./libft/libft.a
 
 	#Sources#
 SRCS = main.c \
-		./src/verify_maps.c
+		./src/verify_maps.c \
+		./src/save_map_vals.c 
 
 
 # BONUS_SRCS = 

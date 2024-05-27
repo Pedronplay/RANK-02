@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/22 20:14:42 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/27 20:15:30 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ typedef struct s_fdf
 
 //			verify maps       //
 bool	ft_handle_map(int argc, char **argv, t_fdf *map);
+void	save_map_vals(t_fdf *fdf, char *file);
+void	map_alloc(int height, int width, t_fdf *fdf);
+void	free_map(t_fdf *fdf);
+
 
 #endif

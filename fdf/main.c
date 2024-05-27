@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:20:09 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/09 17:57:25 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/05/27 21:45:19 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ int	main(int argc, char **argv)
 		ft_printf("yay\n");
 	}
 }
-
