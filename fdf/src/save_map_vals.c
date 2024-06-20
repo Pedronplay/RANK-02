@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:13:12 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/27 21:43:31 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:40:13 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	fill_map(int i, int j, char *data, t_fdf *fdf)
 	else
 		fdf->mapvals.clrcodes[i][j] = 0xffffff;
 	num = ft_atoi(data);
+	// alterar meter individualmente x e y
 	fdf->mapvals.z[i][j] = num;
 }
 

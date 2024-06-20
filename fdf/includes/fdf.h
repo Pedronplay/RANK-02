@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/27 20:15:30 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:04:24 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@ typedef struct s_vals
 typedef struct s_map
 {
 	int	w; 
-	int	height; 
+	int	height;
 }	t_map;
+
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr; //adress
+	int		bpp; //bit per pixel
+	int		line_len;
+	int		endian;
+}	t_img;
 
 typedef struct s_fdf
 {
@@ -39,9 +48,11 @@ typedef struct s_fdf
 	void	*win;
 	t_map	map;
 	t_vals	mapvals;
+	t_img	image;
 }	t_fdf;
 
-# define ESC_KEY 65307
+# define WIDTH 1920
+# define HEIGHT 1080
 
 //			verify maps       //
 bool	ft_handle_map(int argc, char **argv, t_fdf *map);
@@ -49,5 +60,8 @@ void	save_map_vals(t_fdf *fdf, char *file);
 void	map_alloc(int height, int width, t_fdf *fdf);
 void	free_map(t_fdf *fdf);
 
+//			create_maps		//
+void	create_img(t_fdf fdf);
+void	bresenam_algorithm(t_fdf fdf);
 
 #endif

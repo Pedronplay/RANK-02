@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:13:19 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/05/27 21:45:03 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:42:53 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ bool	ft_handle_map(int argc, char **argv, t_fdf	*fdf)
 	{
 		map_alloc(fdf->map.height, fdf->map.w, fdf);
 		save_map_vals(fdf, argv[1]);
-		free_map(fdf);
 		return (1);
 	}
 	return (0);
