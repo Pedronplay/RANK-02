@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/19 21:04:24 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:00:01 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 //			structs				//
 typedef struct s_vals
 {
-	int	**z;
-	int	**clrcodes;
+	float	x;
+	float	y;
+	int	z;
+	int	clrcodes;
 }	t_vals;
 
 typedef struct s_map
@@ -47,8 +49,8 @@ typedef struct s_fdf
 	void	*mlx;
 	void	*win;
 	t_map	map;
-	t_vals	mapvals;
 	t_img	image;
+	t_vals	**mapvals;
 }	t_fdf;
 
 # define WIDTH 1920
@@ -61,7 +63,14 @@ void	map_alloc(int height, int width, t_fdf *fdf);
 void	free_map(t_fdf *fdf);
 
 //			create_maps		//
-void	create_img(t_fdf fdf);
-void	bresenam_algorithm(t_fdf fdf);
+void	bresenam_algorithm(t_fdf *fdf, t_vals ini, t_vals p_end);
+int		draw(t_fdf *fdf);
+void	put_pixels(t_img *img, int x, int y, int clr);
+
+//			draw_utils		//
+void	change_img_bg_clr(t_img *img, int color);
+int		mod(int num);
+int		max_v(int n1, int n2);
+
 
 #endif

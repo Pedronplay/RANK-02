@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:13:12 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/19 16:40:13 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:22:33 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,14 @@ void	free_map(t_fdf *fdf)
 	int	i;
 
 	i = 0;
-	if (fdf->mapvals.clrcodes)
+	if (fdf->mapvals[i])
 	{
 		while (i < fdf->map.height)
 		{
-			free(fdf->mapvals.clrcodes[i]);
+			free(fdf->mapvals[i]);
 			i++;
 		}
-		free(fdf->mapvals.clrcodes);
-		fdf->mapvals.clrcodes = NULL;
-	}
-	i = 0;
-	if (fdf->mapvals.z)
-	{
-		while (i < fdf->map.height)
-		{
-			free(fdf->mapvals.z[i]);
-			i++;
-		}
-		free(fdf->mapvals.z);
-		fdf->mapvals.z = NULL;
+		free(fdf->mapvals);
 	}
 }
 
@@ -45,12 +33,10 @@ void	map_alloc(int height, int width, t_fdf *fdf)
 	int	i;
 
 	i = 0;
-	fdf->mapvals.clrcodes = malloc(sizeof(int *) * height);
-	fdf->mapvals.z = malloc(sizeof(int *) * height);
+	fdf->mapvals = malloc(sizeof(t_vals *) * height);
 	while (i < height)
 	{
-		fdf->mapvals.clrcodes[i] = malloc(sizeof(int) * width);
-		fdf->mapvals.z[i] = malloc(sizeof(int) * width);
+		fdf->mapvals[i] = malloc(sizeof(t_vals) * width);
 		i++;
 	}
 }
@@ -80,23 +66,28 @@ int	atoi_hexa(char *str)
 
 void	fill_map(int i, int j, char *data, t_fdf *fdf)
 {
-	int		num;
 	char	**colrs;
+	int	num;
 
 	num = 0;
 	if (ft_strnstr(data, ",", 4))
 	{
 		colrs = ft_split(data, ',');
-		fdf->mapvals.clrcodes[i][j] = atoi_hexa(colrs[1]);
+		fdf->mapvals[i][j].clrcodes = atoi_hexa(colrs[1]);
+		num = ft_atoi(colrs[0]);
+		fdf->mapvals[i][j].z = num;
 		free(colrs[0]);
 		free(colrs[1]);
 		free(colrs);
 	}
 	else
-		fdf->mapvals.clrcodes[i][j] = 0xffffff;
-	num = ft_atoi(data);
-	// alterar meter individualmente x e y
-	fdf->mapvals.z[i][j] = num;
+	{
+		fdf->mapvals[i][j].clrcodes = 0xffffff;
+		num = ft_atoi(data);
+		fdf->mapvals[i][j].z = num;
+	}
+	fdf->mapvals[i][j].y = i;
+	fdf->mapvals[i][j].x = j;
 }
 
 void	save_map_vals(t_fdf *fdf, char *file)
