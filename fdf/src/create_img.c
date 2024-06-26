@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:34:53 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/22 18:34:41 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/26 22:23:01 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,35 @@ void	put_pixels(t_img *img, int x, int y, int clr)
 	}
 }
 
+static void	isometric_view(t_vals *p, float ang)
+{
+	p->x = (p->x - p->y) * cos(ang);
+	p->y = (p->x + p->y) * sin(ang) - (p->z * 0.2);
+}
+
+void	set_moves(t_fdf *fdf)
+{
+	fdf->moves.x = 10;
+	fdf->moves.y = 10;
+	fdf->moves.zoom = 3;
+}
+
 void	bresenam_algorithm(t_fdf *fdf, t_vals p_ini, t_vals p_end)
 {
 	float	x_step;
 	float	y_step;
 	int		max;
 
-	p_ini.x *= 2;
-	p_end.x *= 2;
-	p_ini.y *= 2;
-	p_end.y *= 2;
-	p_ini.x += 2;
-	p_end.x += 2;
-	p_ini.y += 2;
-	p_end.y += 2;
+	isometric_view(&p_ini, 0.78);
+	isometric_view(&p_end, 0.78);
+	p_ini.x *= fdf->moves.zoom;         //		TRANFORMAR ISTO PARA ALTERAR APPENAS FORA DESTA FUNCK
+	p_end.x *= fdf->moves.zoom;			//		PARA DEPOIS PODER ALTERAR E CENTRAR OS MAPAS	
+	p_ini.y *= fdf->moves.zoom;			//		DESDE O INICIO  DE ACORDO COM OS TAMANHOS DELES
+	p_end.y *= fdf->moves.zoom;
+	p_ini.x += fdf->moves.x;
+	p_end.x += fdf->moves.x;
+	p_ini.y += fdf->moves.y;
+	p_end.y += fdf->moves.y;
 	x_step = p_end.x - p_ini.x;
 	y_step = p_end.y - p_ini.y;
 	max = max_v(mod(x_step), mod(y_step));

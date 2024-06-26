@@ -68,7 +68,7 @@ char		*ft_trim(char *tmps);
 char		*ft_read_file(int fd, char *tmps);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 30
+#  define BUFFER_SIZE 3000
 # endif
 
 typedef struct s_list

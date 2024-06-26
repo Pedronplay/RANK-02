@@ -14,7 +14,7 @@
 	#Compiling Variables#
 CC		 = cc
 CFLAGS	 = -Wall -Wextra -Werror -g
-MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie #-fsanitize=address
+MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -lm -no-pie #-fsanitize=address
 
 	#Names#
 NAME	= fdf

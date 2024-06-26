@@ -44,6 +44,13 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_moves
+{
+	int	x;
+	int	y;
+	int	zoom;
+}	t_moves;
+
 typedef struct s_fdf
 {
 	void	*mlx;
@@ -51,6 +58,7 @@ typedef struct s_fdf
 	t_map	map;
 	t_img	image;
 	t_vals	**mapvals;
+	t_moves	moves;
 }	t_fdf;
 
 # define WIDTH 1920
@@ -71,6 +79,7 @@ void	put_pixels(t_img *img, int x, int y, int clr);
 void	change_img_bg_clr(t_img *img, int color);
 int		mod(int num);
 int		max_v(int n1, int n2);
+void	set_moves(t_fdf *fdf);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:20:09 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/22 17:46:36 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/26 23:00:34 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,30 @@ int	close_window(t_fdf *fdf)
 	exit (0);
 }
 
-int	handle_input(int key, void *fdf)
+
+void	zoom(t_fdf *fdf, int zoom)
+{
+	fdf->moves.zoom += zoom;
+	if (fdf->moves.zoom <= 0)
+		fdf->moves.zoom = 2;
+}
+
+int	handle_input(int key, t_fdf *fdf)
 {
 	if (key == XK_Escape)
 		close_window(fdf);
+	if (key == XK_Left)
+		fdf->moves.x -= 20;
+	if (key == XK_Right)
+		fdf->moves.x += 20;
+	if (key == XK_Up)
+		fdf->moves.y -= 20;
+	if (key == XK_Down)
+		fdf->moves.y += 20;
+	if (key == XK_x)
+		zoom(fdf, 10);
+	if (key == XK_z)
+		zoom(fdf, -10);
 	return (0);
 }
 void	printa_mapa(t_fdf fdf);
@@ -38,6 +58,7 @@ int	main(int argc, char **argv)
 	{
 	//	printa_mapa(fdf);
 		fdf.mlx = mlx_init();
+		set_moves(&fdf);
 		fdf.win = mlx_new_window(fdf.mlx, WIDTH, HEIGHT, "FDF Program Runing");
 		fdf.image.mlx_img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
 		fdf.image.addr = mlx_get_data_addr(fdf.image.mlx_img, &fdf.image.bpp,
