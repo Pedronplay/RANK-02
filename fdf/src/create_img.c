@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:34:53 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/26 22:23:01 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/26 23:17:45 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,21 @@ static void	isometric_view(t_vals *p, float ang)
 
 void	set_moves(t_fdf *fdf)
 {
-	fdf->moves.x = 10;
-	fdf->moves.y = 10;
-	fdf->moves.zoom = 3;
+	fdf->moves.x = 600;
+	fdf->moves.y = 200;
+	fdf->moves.zoom = 30;
+	if (fdf->map.height > 18)
+	{
+		fdf->moves.x = 800;
+		fdf->moves.y = 350;
+		fdf->moves.zoom = 30;
+	}
+	if (fdf->map.height > 80)
+	{
+		fdf->moves.x = 800;
+		fdf->moves.y = 800;
+		fdf->moves.zoom = 2;
+	}
 }
 
 void	bresenam_algorithm(t_fdf *fdf, t_vals p_ini, t_vals p_end)
