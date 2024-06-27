@@ -6,7 +6,7 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:32:15 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/22 18:00:01 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:08:21 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,16 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_moves
-{
-	int	x;
-	int	y;
-	int	zoom;
-}	t_moves;
-
 typedef struct s_fdf
 {
 	void	*mlx;
-	void	*win;
+	void	*win;	
+	int	moves_x;
+	int	moves_y;
+	int	moves_zoom;
 	t_map	map;
 	t_img	image;
 	t_vals	**mapvals;
-	t_moves	moves;
 }	t_fdf;
 
 # define WIDTH 1920
@@ -81,5 +76,9 @@ int		mod(int num);
 int		max_v(int n1, int n2);
 void	set_moves(t_fdf *fdf);
 
+//			rotations		//
+void	rotate_x_axis(float *y, int *z);
+void	rotate_y_axis(float *x, int *z);
+void	rotate_z_axis(float *x, float *y);
 
 #endif

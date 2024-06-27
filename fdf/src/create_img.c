@@ -6,11 +6,23 @@
 /*   By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:34:53 by pebarbos          #+#    #+#             */
-/*   Updated: 2024/06/26 23:17:45 by pebarbos         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:11:22 by pebarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	print_instructions(t_fdf *fdf)
+{
+	mlx_string_put(fdf->mlx, fdf->win, 5, 15, -1,
+	 "Press esq or X icon to exit");
+	mlx_string_put(fdf->mlx, fdf->win, 5, 30, -1,
+	 "Use the arrow keys to move the image");
+	mlx_string_put(fdf->mlx, fdf->win, 5, 45, -1,
+	 "Use Z to zoom out and X to zoom in");
+	mlx_string_put(fdf->mlx, fdf->win, 1805, 1000, -1,
+	 "made by pebarbos");
+}
 
 int	draw(t_fdf *fdf)
 {
@@ -33,6 +45,7 @@ int	draw(t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->image.mlx_img, 0, 0);
+	print_instructions(fdf);
 	return 0;
 }
 
@@ -49,28 +62,49 @@ void	put_pixels(t_img *img, int x, int y, int clr)
 
 static void	isometric_view(t_vals *p, float ang)
 {
-	p->x = (p->x - p->y) * cos(ang);
-	p->y = (p->x + p->y) * sin(ang) - (p->z * 0.2);
+	(void)ang;
+	int z = p->z;
+	rotate_x_axis(&p->y, &p->z);
+	rotate_y_axis(&p->x, &p->z);
+	rotate_z_axis(&p->x, &p->y);
+
+	//p->x = (p->x - p->y) * cos(ang);
+	//p->y = (p->x + p->y) * sin(ang) - (p->z * 0.6);
 }
 
 void	set_moves(t_fdf *fdf)
 {
-	fdf->moves.x = 600;
-	fdf->moves.y = 200;
-	fdf->moves.zoom = 30;
+	fdf->moves_x = 700;
+	fdf->moves_y = 350;
+	fdf->moves_zoom = 30;
 	if (fdf->map.height > 18)
 	{
-		fdf->moves.x = 800;
-		fdf->moves.y = 350;
-		fdf->moves.zoom = 30;
+		fdf->moves_x = 800;
+		fdf->moves_y = 200;
+		fdf->moves_zoom = 20;
 	}
 	if (fdf->map.height > 80)
 	{
-		fdf->moves.x = 800;
-		fdf->moves.y = 800;
-		fdf->moves.zoom = 2;
+		fdf->moves_x = 800;
+		fdf->moves_y = 200;
+		fdf->moves_zoom = 2;
 	}
 }
+
+void	set_initial_pos(t_fdf *fdf, t_vals *p_ini, t_vals *p_end)
+{
+	isometric_view(p_ini, 0.78);
+	isometric_view(p_end, 0.78);
+	p_ini->x *= fdf->moves_zoom;
+	p_end->x *= fdf->moves_zoom;
+	p_ini->y *= fdf->moves_zoom;
+	p_end->y *= fdf->moves_zoom;
+	p_ini->x += fdf->moves_x;
+	p_end->x += fdf->moves_x;
+	p_ini->y += fdf->moves_y;
+	p_end->y += fdf->moves_y;
+}
+
 
 void	bresenam_algorithm(t_fdf *fdf, t_vals p_ini, t_vals p_end)
 {
@@ -78,16 +112,7 @@ void	bresenam_algorithm(t_fdf *fdf, t_vals p_ini, t_vals p_end)
 	float	y_step;
 	int		max;
 
-	isometric_view(&p_ini, 0.78);
-	isometric_view(&p_end, 0.78);
-	p_ini.x *= fdf->moves.zoom;         //		TRANFORMAR ISTO PARA ALTERAR APPENAS FORA DESTA FUNCK
-	p_end.x *= fdf->moves.zoom;			//		PARA DEPOIS PODER ALTERAR E CENTRAR OS MAPAS	
-	p_ini.y *= fdf->moves.zoom;			//		DESDE O INICIO  DE ACORDO COM OS TAMANHOS DELES
-	p_end.y *= fdf->moves.zoom;
-	p_ini.x += fdf->moves.x;
-	p_end.x += fdf->moves.x;
-	p_ini.y += fdf->moves.y;
-	p_end.y += fdf->moves.y;
+	set_initial_pos(fdf, &p_ini, &p_end);
 	x_step = p_end.x - p_ini.x;
 	y_step = p_end.y - p_ini.y;
 	max = max_v(mod(x_step), mod(y_step));
@@ -99,7 +124,7 @@ void	bresenam_algorithm(t_fdf *fdf, t_vals p_ini, t_vals p_end)
 		p_ini.x += x_step;
 		p_ini.y += y_step;
 	}
-	return;
+	return ;
 }
 
 

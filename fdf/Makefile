@@ -6,7 +6,7 @@
 #    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 12:37:06 by pebarbos          #+#    #+#              #
-#    Updated: 2024/06/22 16:02:08 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/06/27 18:57:34 by pebarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS = main.c \
 		./src/verify_maps.c \
 		./src/save_map_vals.c \
 		./src/create_img.c \
-		./src/draw_utils.c
+		./src/draw_utils.c \
+		./src/rotations.c
 
 # BONUS_SRCS = 
 
