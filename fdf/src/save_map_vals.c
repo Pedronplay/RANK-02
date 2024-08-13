@@ -67,7 +67,7 @@ int	atoi_hexa(char *str)
 void	fill_map(int i, int j, char *data, t_fdf *fdf)
 {
 	char	**colrs;
-	int	num;
+	int		num;
 
 	num = 0;
 	if (ft_strnstr(data, ",", 4))

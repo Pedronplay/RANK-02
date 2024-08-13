@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pebarbos <pebarbos@student.42porto.com>    +#+  +:+       +#+         #
+#    By: omeunome <omeunome@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 12:37:06 by pebarbos          #+#    #+#              #
-#    Updated: 2024/06/27 18:57:34 by pebarbos         ###   ########.fr        #
+#    Updated: 2024/07/01 13:53:15 by omeunome         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS = main.c \
 		./src/save_map_vals.c \
 		./src/create_img.c \
 		./src/draw_utils.c \
-		./src/rotations.c
+		./src/rotations.c \
+		./src/signals.c
 
 # BONUS_SRCS = 
 
